@@ -22,7 +22,7 @@ EOT
 
   type = map(object({
     datadog_monitor_id = string
-    name               = optional(string, "default")
+    name               = optional(string) # Default: "default"
     log = optional(object({
       aad_log_enabled = optional(bool)
       filter = optional(object({
