@@ -5,11 +5,11 @@ resource "azurerm_datadog_monitor_tag_rule" "datadog_monitor_tag_rules" {
   name               = each.value.name
 
   dynamic "log" {
-    for_each = each.value.log != null ? [each.value.log] : []
+    for_each = each.value.log != null ? each.value.log : []
     content {
       aad_log_enabled = log.value.aad_log_enabled
       dynamic "filter" {
-        for_each = log.value.filter != null ? [log.value.filter] : []
+        for_each = log.value.filter != null ? log.value.filter : []
         content {
           action = filter.value.action
           name   = filter.value.name
@@ -22,10 +22,10 @@ resource "azurerm_datadog_monitor_tag_rule" "datadog_monitor_tag_rules" {
   }
 
   dynamic "metric" {
-    for_each = each.value.metric != null ? [each.value.metric] : []
+    for_each = each.value.metric != null ? each.value.metric : []
     content {
       dynamic "filter" {
-        for_each = metric.value.filter != null ? [metric.value.filter] : []
+        for_each = metric.value.filter != null ? metric.value.filter : []
         content {
           action = filter.value.action
           name   = filter.value.name
