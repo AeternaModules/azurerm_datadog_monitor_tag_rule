@@ -1,3 +1,7 @@
+output "datadog_monitor_tag_rules_id" {
+  description = "Map of id values across all datadog_monitor_tag_rules, keyed the same as var.datadog_monitor_tag_rules"
+  value       = { for k, v in azurerm_datadog_monitor_tag_rule.datadog_monitor_tag_rules : k => v.id }
+}
 output "datadog_monitor_tag_rules_datadog_monitor_id" {
   description = "Map of datadog_monitor_id values across all datadog_monitor_tag_rules, keyed the same as var.datadog_monitor_tag_rules"
   value       = { for k, v in azurerm_datadog_monitor_tag_rule.datadog_monitor_tag_rules : k => v.datadog_monitor_id }
