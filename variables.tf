@@ -41,17 +41,6 @@ EOT
       })))
     })))
   }))
-  # --- Unconfirmed validation candidates, derived from azurerm_datadog_monitor_tag_rule's provider source ---
-  # Not auto-enabled: either a bespoke provider validator we can't safely translate,
-  # or a path that crosses a list-typed block (needs its own for_each wrapping).
-  # Review, translate into a real validation{} block above, and delete once confirmed.
-  # path: datadog_monitor_id
-  #   source:    [from monitorsresource.ValidateMonitorID] !ok
-  # path: datadog_monitor_id
-  #   source:    [from monitorsresource.ValidateMonitorID] err != nil
-  # path: log.filter.action
-  #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
-  # path: metric.filter.action
-  #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
+  # Note: 4 additional provider-side validators are enforced at apply time but not mirrored as validation{} blocks here (bespoke or non-mechanically-translatable).
 }
 
